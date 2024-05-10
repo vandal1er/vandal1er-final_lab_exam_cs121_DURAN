@@ -1,5 +1,10 @@
+import os
+
 def Pause(message=""):
     input(message)
+
+def Cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def GetInput(max, min=1,message="Enter choice: "):
     try:

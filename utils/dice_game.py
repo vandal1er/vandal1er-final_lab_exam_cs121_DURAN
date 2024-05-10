@@ -1,4 +1,4 @@
-from base import *
+from .user_manager import *
 
 class DiceGame:
     '''def load_scores():
@@ -16,12 +16,7 @@ class DiceGame:
 	def logout():
 		pass'''
 
-    def menu():
-        DrawLine()
-        print("Welcome to Dice Roll Game!")
-        print("1. Register\n2.Login\n3.Exit")
+    def menu(self):
+        pass
         
-        choice = GetInput(3)
         
-        if choice == 1:
-            pass
