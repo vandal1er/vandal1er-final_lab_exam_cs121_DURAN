@@ -1,4 +1,6 @@
 import os
+import random
+import time
 
 def Pause(message=""):
     input(message)
@@ -21,3 +23,9 @@ def DrawLine(length=10):
     for i in range(length):
         print("_", end="")
     print("")
+
+def Loading(message = "loading", duration = 0.33, amount = 3):
+    print(message, end="")
+    for i in range(amount):
+        print(". ", end="", flush=True)
+        time.sleep(duration)

@@ -1,4 +1,6 @@
-from .user import *
+from .dice_game import *
+
+game = DiceGame()
 
 class UserManager:
     def __init__(self):
@@ -43,5 +45,26 @@ class UserManager:
             return
         
 
-    def login():
-        pass
+    def login(self):
+        while True:
+            Cls()
+            DrawLine(26)
+            print("Log In\n")
+            username = input("Username: ")
+            if len(username) == 0:
+                return
+            
+            pw = input("Password: ")
+            if len(pw) == 0:
+                return
+            
+            if username not in self.accounts:
+                Pause("Entered credentials are incorrect.")
+                continue
+            if self.accounts[username].password != pw:
+                Pause("Entered credentials are incorrect.")
+                continue
+            account = self.accounts[username]
+            Pause(f"Login successful! Press Enter to proceed.")
+            game.menu(account)
+            return
