@@ -2,6 +2,9 @@ import os
 import random
 import time
 
+def GetScore(self):
+    return int(self.keys())
+
 def Pause(message=""):
     input(message)
 
@@ -17,6 +20,7 @@ def GetInput(max, min=1,message="Enter choice: "):
         
         return choice
     except ValueError:
+        return "error"
         Pause("Invalid input. Please try again.")
         
 def DrawLine(length=10):
@@ -24,7 +28,7 @@ def DrawLine(length=10):
         print("_", end="")
     print("")
 
-def Loading(message = "loading", duration = 0.33, amount = 3):
+def Loading(message = "loading", duration = 0.1, amount = 3):
     print(message, end="")
     for i in range(amount):
         print(". ", end="", flush=True)
