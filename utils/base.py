@@ -12,3 +12,7 @@ def GetInput(max, min=1,message="Enter choice: "):
     except ValueError:
         Pause("Invalid input. Please try again.")
         
+def DrawLine(length=10):
+    for i in range(length):
+        print("_", end="")
+    print("")
