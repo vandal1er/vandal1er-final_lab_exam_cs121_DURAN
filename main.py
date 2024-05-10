@@ -1,2 +1,2 @@
 def Test():
-    print("Hek")
+    print("Hello")
