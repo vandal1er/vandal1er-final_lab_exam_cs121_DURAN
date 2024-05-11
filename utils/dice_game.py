@@ -43,8 +43,8 @@ class DiceGame:
                 DrawLine(26)
                 print(f"STAGE {stage}, ROUND {round}")
                 Loading(f"{user.name} is rolling the die")
-                #playerRoll = random.randint(1, 6)
-                playerRoll = 6
+                playerRoll = random.randint(1, 6)
+                #playerRoll = 6
                 print(f"\n{user.name} rolled a {playerRoll}!\n")
                 time.sleep(0.5)
                 Loading("CPU is rolling the die")
