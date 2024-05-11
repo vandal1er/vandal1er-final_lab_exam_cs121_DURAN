@@ -1,13 +1,34 @@
 from .user import *
+from .score import *
 
 class DiceGame:
     scores = []
     
-    def load_scores():
-        pass
+    def load_scores(self):
+        if not os.path.exists("data.txt"):
+            with open('data.txt', 'w') as f:
+                f.write("")
+        else:
+            with open('data.txt', 'r') as f:
+                for line in f:
+                    values = line.strip().split(',')
+                    name = values[0]
+                    score = values[1]
+                    streak = values[2]
+                    id = values[3]
+                    
+                    self.scores.append({name:Score(name, score, streak, id)})
+            
 
-    def save_scores():
-        pass
+    def save_scores(self):
+        with open('data.txt', 'w') as f:
+            try:
+                for i in range(10):
+                    name = list(self.scores[i].keys())[0]
+                    f.write(f"{name},{self.scores[i][name].score},{self.scores[i][name].streak},{self.scores[i][name].id}\n")
+            except IndexError:
+                pass
+            
 
     def play_game(self, user):
         stage = 1
@@ -72,7 +93,8 @@ class DiceGame:
                         playerScore = 0
                         breakLoop = True
                         break
-                    else:
+                    elif choice == 0:
+                        breakLoop = False
                         continueLoop = False
                         break
             if breakLoop: continue
@@ -83,8 +105,11 @@ class DiceGame:
             print(f"Stages won: {stagesWon}")
             print(f"Score: {gameScore}")
             DrawLine(26)
-            self.scores.append({user.name:gameScore})
-            #self.scores = sorted(self.scores,key=GetScore)
+            if stagesWon > 0:
+                gameID = user.name + str(gameScore) + datetime.datetime.now().strftime("%Y%m%d%H%M")
+                self.scores.append({user.name:Score(user.name, gameScore, stagesWon, gameID)})
+                self.scores = sorted(self.scores,key=GetScore,reverse=True)
+                self.save_scores()
             #this isnt working yet
             Pause()
             return
@@ -94,8 +119,19 @@ class DiceGame:
                 
 
 
-    def show_top_scores():
-        pass
+    def show_top_scores(self):
+        Cls()
+        DrawLine(26)
+        print("LEADERBOARDS\n")
+        for i in range(len(self.scores)):
+            if i > 9: break
+            name = list(self.scores[i].keys())[0]
+            score = self.scores[i][name].score
+            streak = self.scores[i][name].streak
+            
+            print(f"{i+1}. {name}    Score: {score}    Win Streak: {streak}")
+            
+        Pause()
 
     def logout():
         pass
@@ -112,7 +148,9 @@ class DiceGame:
             if choice == 1:
                 self.play_game(user)
             if choice == 2:
-                pass
+                self.show_top_scores()
+            if choice == 3:
+                return
             
         
         

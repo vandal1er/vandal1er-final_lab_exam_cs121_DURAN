@@ -5,6 +5,7 @@ from utils import dice_game,user_manager, base, user
 manager = user_manager.UserManager()
 
 def run():
+    user_manager.game.load_scores()
     while True:
         base.Cls()
         base.DrawLine(26)
@@ -17,6 +18,12 @@ def run():
             manager.register()
         if choice == 2:
             manager.login()
+        if choice == 3:
+            user_manager.game.show_top_scores()
+            return
 
-user_manager.game.play_game(user.User("Jasiel", "James"))
+
+#user_manager.game.play_game(user.User("Jasiel", "James"))
+#user_manager.game.play_game(user.User("Ja", "Ja"))
+
 run()

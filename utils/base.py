@@ -2,8 +2,10 @@ import os
 import random
 import time
 
+
+
 def GetScore(self):
-    return int(self.keys())
+    return int(list(self.values())[0].score)
 
 def Pause(message=""):
     input(message)

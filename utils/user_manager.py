@@ -12,12 +12,6 @@ class UserManager:
     def save_users():
         pass
 
-    def validate_username():
-        pass
-
-    def validate_password():
-        pass
-
     def register(self):
         while True:
             Cls()
