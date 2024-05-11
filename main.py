@@ -6,6 +6,7 @@ manager = user_manager.UserManager()
 
 def run():
     user_manager.game.load_scores()
+    manager.load_users()
     while True:
         base.Cls()
         base.DrawLine(26)
@@ -19,7 +20,6 @@ def run():
         if choice == 2:
             manager.login()
         if choice == 3:
-            user_manager.game.show_top_scores()
             return
 
 

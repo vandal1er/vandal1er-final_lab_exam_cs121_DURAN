@@ -6,11 +6,23 @@ class UserManager:
     def __init__(self):
         self.accounts = {}
     
-    def load_users():
-        pass
+    def load_users(self):
+        if not os.path.exists("users.txt"):
+            with open('users.txt', 'w') as f:
+                f.write("")
+        else:
+            with open('users.txt', 'r') as f:
+                for line in f:
+                    values = line.strip().split(',')
+                    name = values[0]
+                    pw = values[1]
+                    
+                    self.accounts[name] = User(name, pw)
 
-    def save_users():
-        pass
+    def save_users(self):
+        with open('users.txt', 'w') as f:
+            for account in self.accounts:
+                f.write(f"{self.accounts[account].name},{self.accounts[account].password}\n")
 
     def register(self):
         while True:
@@ -35,6 +47,7 @@ class UserManager:
                 return
             
             self.accounts[username] = User(username, pw)
+            self.save_users()
             Pause("Account registration successful!")
             return
         
@@ -60,5 +73,6 @@ class UserManager:
                 continue
             account = self.accounts[username]
             Pause(f"Login successful! Press Enter to proceed.")
+            
             game.menu(account)
             return
