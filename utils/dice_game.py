@@ -44,7 +44,7 @@ class DiceGame:
                 print(f"STAGE {stage}, ROUND {round}")
                 Loading(f"{user.name} is rolling the die")
                 playerRoll = random.randint(1, 6)
-                #playerRoll = 6
+                #playerRoll = 6 rig
                 print(f"\n{user.name} rolled a {playerRoll}!\n")
                 time.sleep(0.5)
                 Loading("CPU is rolling the die")
@@ -66,7 +66,7 @@ class DiceGame:
                 round += 1
                 Pause("Press Enter to continue.")
                 Cls()
-                if playerScore + cpuScore >= 3:
+                if playerScore >= 3 or cpuScore >= 3:
                     break
             breakLoop = False
             continueLoop = True
@@ -98,7 +98,7 @@ class DiceGame:
                         continueLoop = False
                         break
             if breakLoop: continue
-            if continueLoop: break
+            
             Cls()
             DrawLine(26)
             print("Game over!\n")
@@ -112,6 +112,7 @@ class DiceGame:
                 self.save_scores()
             #this isnt working yet
             Pause()
+            if continueLoop: break
             return
             
             
