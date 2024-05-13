@@ -21,7 +21,5 @@ def run():
             return
 
 
-#user_manager.game.play_game(user.User("Jasiel", "James"))
-#user_manager.game.play_game(user.User("Ja", "Ja"))
 
 run()
