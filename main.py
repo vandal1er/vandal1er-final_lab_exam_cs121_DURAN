@@ -1,7 +1,5 @@
 from utils import dice_game,user_manager, base, user
 
-
-
 manager = user_manager.UserManager()
 
 def run():
