@@ -30,7 +30,7 @@ def DrawLine(length=10):
         print("_", end="")
     print("")
 
-def Loading(message = "loading", duration = 0.1, amount = 3):
+def Loading(message = "loading", duration = 0.2, amount = 3):
     print(message, end="")
     for i in range(amount):
         print(". ", end="", flush=True)
