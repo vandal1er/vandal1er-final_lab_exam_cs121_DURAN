@@ -1,4 +1,4 @@
-from utils import dice_game,user_manager, base, user
+from utils import user_manager, base
 
 manager = user_manager.UserManager()
 
